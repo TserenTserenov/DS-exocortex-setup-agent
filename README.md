@@ -2,15 +2,15 @@
 
 # Exocortex Setup Agent
 
-Агент развёртывания персонального экзокортекса из [exocortex-template](https://github.com/TserenTserenov/exocortex-template).
+Агент развёртывания персонального экзокортекса из [FMT-exocortex](https://github.com/TserenTserenov/FMT-exocortex).
 
 ## Быстрый старт
 
 ### Вариант 1: Bash-скрипт
 
 ```bash
-git clone https://github.com/TserenTserenov/exocortex-setup-agent.git
-cd exocortex-setup-agent
+git clone https://github.com/TserenTserenov/DS-exocortex-setup.git
+cd DS-exocortex-setup
 bash setup.sh
 ```
 
@@ -21,16 +21,16 @@ bash setup.sh
 - Путь к Claude CLI
 
 И автоматически:
-1. Форкнет exocortex-template
+1. Форкнет FMT-exocortex
 2. Подставит ваши настройки
 3. Установит launchd-агентов
-4. Создаст my-strategy репо
+4. Создаст DS-strategy репо
 5. Подготовит всё для первой стратегической сессии
 
 ### Вариант 2: Claude Code агент (интерактивный)
 
 ```bash
-cd exocortex-setup-agent
+cd DS-exocortex-setup
 claude -p "$(cat prompts/setup.md)"
 ```
 
@@ -46,7 +46,7 @@ claude -p "$(cat prompts/setup.md)"
 ## После установки
 
 ```bash
-cd ~/Github/my-strategy
+cd ~/Github/DS-strategy
 claude
 # Попросите Claude провести первую стратегическую сессию
 ```
@@ -54,7 +54,7 @@ claude
 ## Обновление экзокортекса
 
 ```bash
-cd ~/Github/exocortex-template
+cd ~/Github/FMT-exocortex
 git fetch upstream
 git merge upstream/main
 # Перезапустить setup.sh для обновления launchd (при необходимости)

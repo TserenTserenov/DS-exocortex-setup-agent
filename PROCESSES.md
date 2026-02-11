@@ -7,7 +7,7 @@
 ### Вход
 
 - Пользователь с macOS, установленными Claude CLI и GitHub CLI
-- Шаблон exocortex-template в upstream
+- Шаблон FMT-exocortex в upstream
 
 ### Действия
 
@@ -41,14 +41,14 @@
     │                               │  8. Установка launchd        │
     │                               │  (strategist plist → load)   │
     │                               │                              │
-    │                               │  9. Создание my-strategy     │
+    │                               │  9. Создание DS-strategy     │
     │                               │─────────────────────────────►│
     │                               │  (gh repo create --private)  │
     │                               │                              │
     │  10. "Setup Complete!"        │                              │
     │◄──────────────────────────────│                              │
     │                               │                              │
-    │  11. cd my-strategy && claude │                              │
+    │  11. cd DS-strategy && claude │                              │
     │  → первая стратегическая      │                              │
     │    сессия                     │                              │
 ```
@@ -57,20 +57,20 @@
 
 | Артефакт | Расположение |
 |----------|-------------|
-| Fork exocortex-template | `{WORKSPACE_DIR}/exocortex-template/` |
+| Fork FMT-exocortex | `{WORKSPACE_DIR}/FMT-exocortex/` |
 | CLAUDE.md (сконфигурированный) | `{WORKSPACE_DIR}/CLAUDE.md` |
 | Оперативная память | `~/.claude/projects/.../memory/` |
 | Claude permissions | `{WORKSPACE_DIR}/.claude/settings.local.json` |
 | LaunchAgents (2 шт.) | `~/Library/LaunchAgents/com.strategist.*.plist` |
-| my-strategy (private GitHub repo) | `{WORKSPACE_DIR}/my-strategy/` |
+| DS-strategy (private GitHub repo) | `{WORKSPACE_DIR}/DS-strategy/` |
 
 ### Проверка успешности
 
-- [ ] `ls {WORKSPACE_DIR}/exocortex-template/` — структура на месте
+- [ ] `ls {WORKSPACE_DIR}/FMT-exocortex/` — структура на месте
 - [ ] `ls {WORKSPACE_DIR}/CLAUDE.md` — файл существует
 - [ ] `launchctl list | grep strategist` — агенты загружены
-- [ ] `gh repo view {GITHUB_USER}/my-strategy` — репо создано
-- [ ] Нет `{{...}}` placeholder-ов в файлах: `grep -r '{{' {WORKSPACE_DIR}/exocortex-template/`
+- [ ] `gh repo view {GITHUB_USER}/DS-strategy` — репо создано
+- [ ] Нет `{{...}}` placeholder-ов в файлах: `grep -r '{{' {WORKSPACE_DIR}/FMT-exocortex/`
 
 ---
 
@@ -81,14 +81,14 @@
 ### Вход
 
 - Развёрнутый экзокортекс (после Сценария 1)
-- Обновления в upstream (TserenTserenov/exocortex-template)
+- Обновления в upstream (TserenTserenov/FMT-exocortex)
 
 ### Действия
 
 ```
 Пользователь                       Git                          Upstream
     │                               │                              │
-    │  1. cd exocortex-template     │                              │
+    │  1. cd FMT-exocortex     │                              │
     │──────────────────────────────►│                              │
     │                               │                              │
     │  2. git fetch upstream        │                              │
@@ -108,7 +108,7 @@
     │                               │                              │
     │  5. Переустановить launchd    │                              │
     │     (при изменении plist)     │                              │
-    │  bash strategist-agent/       │                              │
+    │  bash DS-strategist/       │                              │
     │       install.sh              │                              │
     │                               │                              │
     │  6. Обновить CLAUDE.md        │                              │
@@ -128,9 +128,9 @@
 
 | Компонент | Путь | Действие при обновлении |
 |-----------|------|------------------------|
-| Промпты стратега | `strategist-agent/prompts/*.md` | Автоматически (git merge) |
-| Скрипты | `strategist-agent/scripts/*.sh` | Автоматически (git merge) |
-| LaunchD plist | `strategist-agent/scripts/launchd/*.plist` | Переустановить (`install.sh`) |
+| Промпты стратега | `DS-strategist/prompts/*.md` | Автоматически (git merge) |
+| Скрипты | `DS-strategist/scripts/*.sh` | Автоматически (git merge) |
+| LaunchD plist | `DS-strategist/scripts/launchd/*.plist` | Переустановить (`install.sh`) |
 | CLAUDE.md (шаблон) | `CLAUDE.md` | Скопировать в workspace root |
 | Memory шаблоны | `memory/*.md` (кроме MEMORY.md) | Скопировать в ~/.claude/ |
 | Settings | `.claude/settings.local.json` | Скопировать в workspace |
@@ -140,9 +140,9 @@
 | Данные | Почему |
 |--------|--------|
 | `memory/MEMORY.md` (содержимое) | Личные РП и навигация пользователя |
-| `my-strategy/current/` | Текущие планы пользователя |
-| `my-strategy/docs/` | Стратегия и неудовлетворённости |
-| `my-strategy/archive/` | История планов |
+| `DS-strategy/current/` | Текущие планы пользователя |
+| `DS-strategy/docs/` | Стратегия и неудовлетворённости |
+| `DS-strategy/archive/` | История планов |
 
 ### Проверка успешности
 

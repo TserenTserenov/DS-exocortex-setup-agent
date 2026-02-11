@@ -2,7 +2,7 @@
 
 ## Задача
 
-Развернуть полный экзокортекс из шаблона exocortex-template.
+Развернуть полный экзокортекс из шаблона FMT-exocortex.
 
 ## Алгоритм
 
@@ -26,7 +26,7 @@
 
 ### 3. Fork и настройка
 
-1. Fork exocortex-template через `gh repo fork`
+1. Fork FMT-exocortex через `gh repo fork`
 2. Клонировать в рабочую директорию
 3. Заменить placeholder-переменные во всех файлах:
    - `{{GITHUB_USER}}` → username
@@ -41,11 +41,11 @@
 1. Скопировать CLAUDE.md в корень рабочей директории
 2. Скопировать memory/ в ~/.claude/projects/.../memory/
 3. Скопировать .claude/settings.local.json
-4. Установить launchd-агентов (strategist-agent/install.sh)
+4. Установить launchd-агентов (DS-strategist/install.sh)
 
-### 5. Создание my-strategy
+### 5. Создание DS-strategy
 
-1. Выделить my-strategy/ из template в отдельный репо
+1. Выделить DS-strategy/ из template в отдельный репо
 2. Инициализировать git
 3. Создать GitHub repo (private)
 4. Первый коммит

@@ -8,7 +8,7 @@
 
 ## Upstream dependencies
 
-- exocortex-template (Format — шаблон структуры)
+- FMT-exocortex (Format — шаблон структуры)
 
 ## Downstream outputs
 
@@ -16,5 +16,5 @@
 
 ## Non-goals
 
-- Хранение шаблонов (→ exocortex-template)
+- Хранение шаблонов (→ FMT-exocortex)
 - Хранение знаний (→ Pack)

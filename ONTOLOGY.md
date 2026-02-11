@@ -1,12 +1,12 @@
 # Онтология: Exocortex Setup Agent
 
-> Downstream от `exocortex-template/ONTOLOGY.md`
+> Downstream от `FMT-exocortex/ONTOLOGY.md`
 
 ## Сущности
 
 ### Setup Agent
 
-Инструмент развёртывания персонального экзокортекса из шаблона [exocortex-template](https://github.com/TserenTserenov/exocortex-template).
+Инструмент развёртывания персонального экзокортекса из шаблона [FMT-exocortex](https://github.com/TserenTserenov/FMT-exocortex).
 
 **Тип:** Downstream/instrument — не содержит шаблонов, только механизм доставки.
 
@@ -31,27 +31,27 @@
 
 | Артефакт | Путь | Описание |
 |----------|------|---------|
-| Fork exocortex-template | `{WORKSPACE_DIR}/exocortex-template/` | Сконфигурированный шаблон |
+| Fork FMT-exocortex | `{WORKSPACE_DIR}/FMT-exocortex/` | Сконфигурированный шаблон |
 | CLAUDE.md | `{WORKSPACE_DIR}/CLAUDE.md` | Глобальные правила |
 | Memory | `~/.claude/projects/.../memory/` | Оперативная память Claude |
 | Settings | `{WORKSPACE_DIR}/.claude/settings.local.json` | Permissions |
 | LaunchAgents | `~/Library/LaunchAgents/com.strategist.*.plist` | Расписание стратега |
-| my-strategy | `{WORKSPACE_DIR}/my-strategy/` | Отдельный GitHub-репо (private) |
+| DS-strategy | `{WORKSPACE_DIR}/DS-strategy/` | Отдельный GitHub-репо (private) |
 
 ### Пространства
 
 | Пространство | Описание |
 |-------------|---------|
-| **Platform-space** | Файлы из exocortex-template, обновляемые через upstream |
+| **Platform-space** | Файлы из FMT-exocortex, обновляемые через upstream |
 | **User-space** | Данные пользователя: MEMORY.md (содержимое), планы, стратегии |
 
 ### Зависимости
 
 ```
-exocortex-template (Format, source-of-truth)
+FMT-exocortex (Format, source-of-truth)
     │
     ▼
-exocortex-setup-agent (Downstream/instrument)
+DS-exocortex-setup-agent (Downstream/instrument)
     │
     ▼
 Развёрнутый экзокортекс пользователя

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Exocortex Setup Script
-# Forks exocortex-template, configures placeholders, installs launchd agents
+# Forks FMT-exocortex, configures placeholders, installs launchd agents
 set -e
 
 echo "=========================================="
@@ -39,16 +39,16 @@ echo ""
 
 # 2. Fork template
 echo ""
-echo "[1/7] Forking exocortex-template..."
+echo "[1/7] Forking FMT-exocortex..."
 cd "$WORKSPACE_DIR"
 
-if [ -d "exocortex-template" ]; then
+if [ -d "FMT-exocortex" ]; then
     echo "  Directory already exists, skipping fork."
 else
-    gh repo fork TserenTserenov/exocortex-template --clone --remote
+    gh repo fork TserenTserenov/FMT-exocortex --clone --remote
 fi
 
-TEMPLATE_DIR="$WORKSPACE_DIR/exocortex-template"
+TEMPLATE_DIR="$WORKSPACE_DIR/FMT-exocortex"
 
 # 3. Substitute placeholders
 echo "[2/7] Configuring placeholders..."
@@ -87,30 +87,30 @@ echo "  Copied to $WORKSPACE_DIR/.claude/settings.local.json"
 
 # 7. Install launchd agents
 echo "[6/7] Installing strategist launchd agents..."
-chmod +x "$TEMPLATE_DIR/strategist-agent/scripts/strategist.sh"
-chmod +x "$TEMPLATE_DIR/strategist-agent/install.sh"
-bash "$TEMPLATE_DIR/strategist-agent/install.sh"
+chmod +x "$TEMPLATE_DIR/DS-strategist/scripts/strategist.sh"
+chmod +x "$TEMPLATE_DIR/DS-strategist/install.sh"
+bash "$TEMPLATE_DIR/DS-strategist/install.sh"
 
-# 8. Create my-strategy repo
-echo "[7/7] Setting up my-strategy..."
-MY_STRATEGY_DIR="$WORKSPACE_DIR/my-strategy"
+# 8. Create DS-strategy repo
+echo "[7/7] Setting up DS-strategy..."
+MY_STRATEGY_DIR="$WORKSPACE_DIR/DS-strategy"
 
 if [ -d "$MY_STRATEGY_DIR/.git" ]; then
-    echo "  my-strategy already exists as git repo."
+    echo "  DS-strategy already exists as git repo."
 else
-    # Move my-strategy out of template into its own repo
-    cp -r "$TEMPLATE_DIR/my-strategy" "$MY_STRATEGY_DIR.tmp"
-    rm -rf "$TEMPLATE_DIR/my-strategy"
+    # Move DS-strategy out of template into its own repo
+    cp -r "$TEMPLATE_DIR/DS-strategy" "$MY_STRATEGY_DIR.tmp"
+    rm -rf "$TEMPLATE_DIR/DS-strategy"
 
     mv "$MY_STRATEGY_DIR.tmp" "$MY_STRATEGY_DIR"
     cd "$MY_STRATEGY_DIR"
     git init
     git add -A
-    git commit -m "Initial exocortex: my-strategy governance hub"
+    git commit -m "Initial exocortex: DS-strategy governance hub"
 
     # Create GitHub repo
-    gh repo create "$GITHUB_USER/my-strategy" --private --source=. --push 2>/dev/null || \
-        echo "  GitHub repo my-strategy already exists or creation skipped."
+    gh repo create "$GITHUB_USER/DS-strategy" --private --source=. --push 2>/dev/null || \
+        echo "  GitHub repo DS-strategy already exists or creation skipped."
 fi
 
 echo ""
