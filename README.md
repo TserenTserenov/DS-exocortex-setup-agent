@@ -2,15 +2,15 @@
 
 # Exocortex Setup Agent
 
-Агент развёртывания персонального экзокортекса из [FMT-exocortex](https://github.com/TserenTserenov/FMT-exocortex).
+Агент развёртывания персонального экзокортекса из [FMT-exocortex](https://github.com/TserenTserenov/FMT-exocortex-template).
 
 ## Быстрый старт
 
 ### Вариант 1: Bash-скрипт
 
 ```bash
-git clone https://github.com/TserenTserenov/DS-exocortex-setup.git
-cd DS-exocortex-setup
+git clone https://github.com/TserenTserenov/DS-exocortex-setup-agent.git
+cd DS-exocortex-setup-agent
 bash setup.sh
 ```
 
@@ -30,7 +30,7 @@ bash setup.sh
 ### Вариант 2: Claude Code агент (интерактивный)
 
 ```bash
-cd DS-exocortex-setup
+cd DS-exocortex-setup-agent
 claude -p "$(cat prompts/setup.md)"
 ```
 

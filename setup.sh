@@ -45,7 +45,7 @@ cd "$WORKSPACE_DIR"
 if [ -d "FMT-exocortex" ]; then
     echo "  Directory already exists, skipping fork."
 else
-    gh repo fork TserenTserenov/FMT-exocortex --clone --remote
+    gh repo fork TserenTserenov/FMT-exocortex-template --clone --remote
 fi
 
 TEMPLATE_DIR="$WORKSPACE_DIR/FMT-exocortex"

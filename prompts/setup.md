@@ -2,7 +2,7 @@
 
 ## Задача
 
-Развернуть полный экзокортекс из шаблона FMT-exocortex.
+Развернуть полный экзокортекс из шаблона FMT-exocortex-template.
 
 ## Алгоритм
 
@@ -26,7 +26,7 @@
 
 ### 3. Fork и настройка
 
-1. Fork FMT-exocortex через `gh repo fork`
+1. Fork FMT-exocortex-template через `gh repo fork`
 2. Клонировать в рабочую директорию
 3. Заменить placeholder-переменные во всех файлах:
    - `{{GITHUB_USER}}` → username
