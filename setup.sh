@@ -55,10 +55,14 @@ echo "[2/7] Configuring placeholders..."
 
 # Find all text files and replace placeholders
 find "$TEMPLATE_DIR" -type f \( -name "*.md" -o -name "*.json" -o -name "*.sh" -o -name "*.plist" \) | while read file; do
+    # Compute Claude project slug: /Users/alice/Github → -Users-alice-Github
+    CLAUDE_PROJECT_SLUG="-$(echo "$WORKSPACE_DIR" | tr '/' '-')"
+
     sed -i '' \
         -e "s|{{GITHUB_USER}}|$GITHUB_USER|g" \
         -e "s|{{WORKSPACE_DIR}}|$WORKSPACE_DIR|g" \
         -e "s|{{CLAUDE_PATH}}|$CLAUDE_PATH|g" \
+        -e "s|{{CLAUDE_PROJECT_SLUG}}|$CLAUDE_PROJECT_SLUG|g" \
         -e "s|{{TIMEZONE_HOUR}}|$TIMEZONE_HOUR|g" \
         -e "s|{{TIMEZONE_DESC}}|$TIMEZONE_DESC|g" \
         -e "s|{{HOME_DIR}}|$HOME_DIR|g" \

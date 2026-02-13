@@ -1,0 +1,103 @@
+# Маппинг: авторские файлы → файлы шаблона FMT-exocortex-template
+#
+# transform:
+#   placeholder-sub   — замена авторских путей на {{PLACEHOLDERS}}
+#   strip-author      — удаление автор-специфичного контента
+#   passthrough       — копирование без изменений
+#   skeleton          — всегда из templates/ (не из авторского файла)
+
+workspace: "~/Github"
+template_dir: "FMT-exocortex-template"
+memory_dir: "~/.claude/projects/-Users-tserentserenov-Github/memory"
+
+# Подстановки (авторские пути → placeholders)
+placeholders:
+  "/Users/tserentserenov": "{{HOME_DIR}}"
+  "-Users-tserentserenov-Github": "{{CLAUDE_PROJECT_SLUG}}"
+  "/opt/homebrew/bin/claude": "{{CLAUDE_PATH}}"
+  "DS-my-strategy": "DS-strategy"
+  "DS-strategist-agent": "DS-strategist"
+
+# Паттерны для удаления (grep -v)
+strip_patterns:
+  - "PACK-digital-platform"
+  - "PACK-MIM"
+  - "aist_bot"
+  - "DS-Knowledge-Index"
+  - "DP\\.AISYS\\."
+  - "DP\\.AGENT\\."
+  - "DP\\.SYS\\."
+  - "DP\\.EXOCORTEX\\."
+  - "DS-extractor-agent"
+  - "DS-synchronizer"
+  - "DS-aist-bot"
+  - "DS-ecosystem-development"
+  - "РП #[0-9]"
+  - "Источник сценария:"
+
+# Файлы для синхронизации
+files:
+  # --- CLAUDE.md (глобальный) ---
+  - source: "~/Github/CLAUDE.md"
+    target: "CLAUDE.md"
+    transform: [placeholder-sub, strip-author]
+
+  # --- Промпты Стратега ---
+  - source: "DS-strategist-agent/prompts/session-prep.md"
+    target: "strategist-agent/prompts/session-prep.md"
+    transform: [placeholder-sub]
+
+  - source: "DS-strategist-agent/prompts/strategy-session.md"
+    target: "strategist-agent/prompts/strategy-session.md"
+    transform: [placeholder-sub]
+
+  - source: "DS-strategist-agent/prompts/day-plan.md"
+    target: "strategist-agent/prompts/day-plan.md"
+    transform: [placeholder-sub]
+
+  - source: "DS-strategist-agent/prompts/day-close.md"
+    target: "strategist-agent/prompts/day-close.md"
+    transform: [placeholder-sub]
+
+  - source: "DS-strategist-agent/prompts/week-review.md"
+    target: "strategist-agent/prompts/week-review.md"
+    transform: [placeholder-sub]
+
+  - source: "DS-strategist-agent/prompts/note-review.md"
+    target: "strategist-agent/prompts/note-review.md"
+    transform: [placeholder-sub]
+
+  # --- Скрипты Стратега ---
+  - source: "DS-strategist-agent/scripts/strategist.sh"
+    target: "strategist-agent/scripts/strategist.sh"
+    transform: [placeholder-sub]
+
+  # --- Memory (Слой 3) ---
+  - source: "memory/hard-distinctions.md"
+    target: "memory/hard-distinctions.md"
+    transform: [passthrough]
+
+  - source: "memory/fpf-reference.md"
+    target: "memory/fpf-reference.md"
+    transform: [passthrough]
+
+  - source: "memory/checklists.md"
+    target: "memory/checklists.md"
+    transform: [passthrough]
+
+  - source: "memory/repo-type-rules.md"
+    target: "memory/repo-type-rules.md"
+    transform: [passthrough]
+
+  - source: "memory/claude-md-maintenance.md"
+    target: "memory/claude-md-maintenance.md"
+    transform: [passthrough]
+
+  - source: "memory/wp-gate-lesson.md"
+    target: "memory/wp-gate-lesson.md"
+    transform: [passthrough]
+
+  # --- MEMORY.md (скелет, НЕ из авторского) ---
+  - source: "templates/MEMORY.md.skeleton"
+    target: "memory/MEMORY.md"
+    transform: [skeleton]
