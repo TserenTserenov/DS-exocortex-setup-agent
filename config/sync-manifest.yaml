@@ -97,6 +97,10 @@ files:
     target: "memory/wp-gate-lesson.md"
     transform: [passthrough]
 
+  - source: "memory/sota-reference.md"
+    target: "memory/sota-reference.md"
+    transform: [passthrough]
+
   # --- MEMORY.md (скелет, НЕ из авторского) ---
   - source: "templates/MEMORY.md.skeleton"
     target: "memory/MEMORY.md"

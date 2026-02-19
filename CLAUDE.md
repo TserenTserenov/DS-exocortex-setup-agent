@@ -57,9 +57,42 @@ Source-of-truth: `config/sync-manifest.yaml`
 | `~/Github/CLAUDE.md` | `CLAUDE.md` | placeholder-sub + strip-author |
 | `DS-strategist-agent/prompts/*.md` | `strategist-agent/prompts/*.md` | placeholder-sub |
 | `DS-strategist-agent/scripts/` | `strategist-agent/scripts/` | placeholder-sub |
-| `memory/*.md` (кроме MEMORY.md РП) | `memory/*.md` | passthrough |
+| `memory/*.md` (кроме MEMORY.md) | `memory/*.md` | passthrough |
 | `memory/MEMORY.md` | `memory/MEMORY.md` | skeleton (всегда из templates/) |
+
+**Standard-файлы (8 шт.):** CLAUDE.md, fpf-reference.md, hard-distinctions.md, checklists.md, sota-reference.md, repo-type-rules.md, claude-md-maintenance.md, wp-gate-lesson.md
+
+## 5. Архитектура обновлений
+
+```
+Авторская сторона (template-sync, еженедельно):
+  Авторские репо → template-sync.sh → FMT-exocortex-template (GitHub)
+                   (placeholder-sub     (коммит + push + tag)
+                    + strip-author)
+
+Пользовательская сторона (update.sh, по запросу):
+  FMT-exocortex-template → update.sh → git fetch upstream → merge
+                                         ↓
+                           Reinstall: CLAUDE.md → workspace root
+                                      memory/*.md → ~/.claude/projects/
+                                      (MEMORY.md пропускается — данные пользователя)
+```
+
+### Классификация файлов
+
+| Категория | Файлы | Обновляется? | Кто владеет |
+|-----------|-------|-------------|-------------|
+| **Standard** | CLAUDE.md, 7 memory/*.md (кроме MEMORY.md) | Да (template-sync → update.sh) | Платформа |
+| **Personal** | MEMORY.md, DS-strategy/, personal/ | Нет (никогда) | Пользователь |
+| **Infrastructure** | setup.sh, update.sh, launchd plists | Редко (через upstream merge) | Платформа |
+
+### Гарантии
+
+- MEMORY.md **НИКОГДА** не перезаписывается (update.sh явно пропускает его)
+- Standard файлы заменяются **целиком** (no merge — whole-file copy)
+- Merge conflicts возможны только в Infrastructure файлах (редко)
+- Личные файлы пользователя (DS-strategy/) **не трогаются** (это отдельный репозиторий)
 
 ---
 
-*Последнее обновление: 2026-02-13*
+*Последнее обновление: 2026-02-19*

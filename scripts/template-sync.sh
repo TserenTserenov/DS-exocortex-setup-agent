@@ -214,7 +214,7 @@ done
 sync_file "DS-strategist-agent/scripts/strategist.sh" "strategist-agent/scripts/strategist.sh" "placeholder-sub"
 
 # Memory файлы (passthrough)
-for mem_file in hard-distinctions.md fpf-reference.md checklists.md repo-type-rules.md claude-md-maintenance.md wp-gate-lesson.md; do
+for mem_file in hard-distinctions.md fpf-reference.md checklists.md repo-type-rules.md claude-md-maintenance.md wp-gate-lesson.md sota-reference.md; do
     if [ -f "$MEMORY_SRC/$mem_file" ]; then
         sync_file "memory/$mem_file" "memory/$mem_file" "passthrough"
     fi
