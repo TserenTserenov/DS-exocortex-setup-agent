@@ -1,6 +1,8 @@
+> **ARCHIVED** — This repository has been migrated to [DS-ai-systems/setup](https://github.com/TserenTserenov/DS-ai-systems). All future development happens there.
+
 > **Тип репозитория:** `Downstream/instrument`
 
-# Exocortex Setup Agent
+# Exocortex Setup Agent (ARCHIVED)
 
 Агент развёртывания персонального экзокортекса из [FMT-exocortex](https://github.com/TserenTserenov/FMT-exocortex-template).
 
